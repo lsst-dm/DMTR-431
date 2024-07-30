@@ -75,7 +75,7 @@ Some KPMs (e.g., PF1, AF1, AF2) involve thresholds that are different for ``desi
 As noted previously, we now report metrics calculated by the \texttt{analysis\_tools} package, which improves upon the \texttt{faro} tools we had been previously using for calculation of data quality metrics. The plots in this Report include metrics from both \texttt{analysis\_tools} and \texttt{faro} for historical continuity, but future data processing campaigns will not run the \texttt{faro} tasks. One significant change is evident when comparing the outputs of the two frameworks on the v26 dataset: in Figure~\ref{fig:phot_metrics}, PF1 is much smaller as measured by \texttt{analysis\_tools} than from \texttt{faro}. This is expected, as we discovered an error in the calculation that was fixed when porting the PF1 metric from \texttt{faro} to \texttt{analysis\_tools} (see \href{https://rubinobs.atlassian.net/browse/DM-39332}{Jira ticket DM-39332} for details). The previous version had been calculating the outlier fraction relative to a fixed value of 15 mmag, while the metric is intended to be the fraction of outliers \textit{more than 15 mmag from the median} photometric repeatability. The changes on DM-39332 have brought the PF1 metric's calculation in line with the description in the DMSR, resulting in a value that is well beneath the design threshold for PF1.
 
 As noted in the previous section, most of the major changes between versions 26 and 27 of the pipelines are related to improvements in supporting packages (e.g., the \texttt{source\_injection} tools) and instrument-specific modifications. Most of the data processing algorithms in the Science Pipelines are virtually unchanged between versions 26 and 27, so the data quality metrics should also be similar. Indeed, the photometry metrics (Section~\ref{photometric-performance}) are unchanged, and the astrometry metrics (Section~\ref{astrometric-performance}) show only minor changes (particularly, slight improvements in the outlier fractions AF1 and AF2).
-The ellipticity correlation metrics (Section~\ref{ellipticity-correlations}) show only a small differences between Release 26 and 27 for TE1 (median ellipticity residual correlations at 1 arcminute scales), but the TE2 (5-arcminute scales) value has nearly doubled. WHY IS THIS?
+The ellipticity correlation metrics (Section~\ref{ellipticity-correlations}) show only a small difference between Release 26 and 27 for TE1 (median ellipticity residual correlations at 1 arcminute scales), but the TE2 (5-arcminute scales) value has nearly doubled. WHY IS THIS?
 
 
 \section{Photometric Performance}\label{photometric-performance}
@@ -272,7 +272,7 @@ PF1: \emph{y}\strut
 \end{figure}
 
 The following metrics are defined following LSR-REQ-0094
-\citedsp{LSE-29} and Table 18 of \citeds{LPM-17}. Values in this table represent the mean of the results reported by \texttt{faro} for the three tracts in RC2.
+\citedsp{LSE-29} and Table 18 of \citeds{LPM-17}. Values in this table represent the mean of the results reported by \texttt{analysis\_tools} for the three tracts in RC2.
 
 Any entries left blank are those for which we do not have data in the given filter for that dataset.
 
